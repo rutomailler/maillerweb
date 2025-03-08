@@ -1,0 +1,9 @@
+async function checkAuth() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+        window.location.href = "index.html";  // Redirect to login if not logged in
+    } else {
+        document.body.innerHTML = `<h1>Welcome, ${user.email}</h1>`;
+    }
+}
+checkAuth();
